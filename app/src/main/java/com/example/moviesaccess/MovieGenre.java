@@ -1,7 +1,12 @@
 package com.example.moviesaccess;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MovieGenre {
+    @SerializedName("id")
     private Integer id;
+
+    @SerializedName("name")
     private String name;
 
     public MovieGenre(Integer id, String name) {

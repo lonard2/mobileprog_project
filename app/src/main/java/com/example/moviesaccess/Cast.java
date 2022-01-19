@@ -1,8 +1,15 @@
 package com.example.moviesaccess;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Cast {
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("character")
     private String character;
+
+    @SerializedName("profile_path")
     private String profilePath;
 
     public Cast(String name, String character, String profilePath) {

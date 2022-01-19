@@ -1,19 +1,44 @@
 package com.example.moviesaccess;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Movie {
+    @SerializedName("title")
     private String title;
+
+    @SerializedName("genres")
     private List<MovieGenre> genres = null;
+
+    @SerializedName("runtime")
     private Integer runtime;
+
+    @SerializedName("overview")
     private String overview;
+
+    @SerializedName("status")
     private String status;
+
+    @SerializedName("release_date")
     private String releaseDate;
+
+    @SerializedName("backdrop_path")
     private String backdropPath;
+
+    @SerializedName("poster_path")
     private String posterPath;
+
+    @SerializedName("production_countries")
     private List<MovieCountry> productionCountries = null;
+
+    @SerializedName("spoken_languages")
     private List<MovieLanguage> spokenLanguages = null;
+
+    @SerializedName("providers")
     private String providers;
+
+    @SerializedName("vote_average")
     private Double voteAverage;
 
     public Movie(String title, List<MovieGenre> genres, Integer runtime,

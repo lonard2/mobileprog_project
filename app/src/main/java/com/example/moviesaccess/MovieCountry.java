@@ -1,7 +1,12 @@
 package com.example.moviesaccess;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MovieCountry {
+    @SerializedName("iso_3166_1")
     private String iso31661;
+
+    @SerializedName("name")
     private String name;
 
     public MovieCountry(String iso31661, String name) {

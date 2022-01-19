@@ -1,9 +1,14 @@
 package com.example.moviesaccess;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class CastId {
+    @SerializedName("id")
     private Integer id;
+
+    @SerializedName("cast")
     private List<Cast> cast = null;
 
     public CastId(Integer id, List<Cast> cast) {
