@@ -1,5 +1,38 @@
 <resources>
     <string name="app_name">MoviesAccess</string>
 
+    <string name="sub_banner1">Pilihan film terbaik</string>
+    <string name="sub_banner2">Film dengan rating tertinggi</string>
+    <string name="sub_banner3">Film aksi</string>
+    <string name="sub_banner4">Superhero di layar lebar</string>
+    <string name="sub_banner5">Olahraga dan film</string>
+    <string name="sub_banner6">Animasi yang memukau</string>
+    <string name="sub_banner7">Romansa dalam putaran film</string>
+    <string name="sub_banner8">Film yang tayang di 2019</string>
 
+    <string name="loginMsg">Masuk untuk pengalaman yang lebih baik dari MovieAccess</string>
+
+    <string name="welcomeMsg">Selamat datang!</string>
+    <string name="termsAgreementMsg">Dengan mendaftar, Anda menyetujui Syarat dan Ketentuan Aplikasi serta Kebijakan Privasi kami.</string>
+
+    <string name="backBtn">KEMBALI</string>
+    <string name="registerBtn">DAFTAR</string>
+    <string name="loginBtn">LOGIN</string>
+
+    <string name="registerPrompt1">Not yet registered?</string>
+    <string name="registerPrompt2">Register now!</string>
+    <string name="usernamePrompt">Username barumu</string>
+    <string name="passwordPrompt">Password barumu</string>
+    <string name="passwordConfirmPrompt">Ulangi passwordmu</string>
+
+    <string name="usernameLoginPrompt">Username</string>
+    <string name="passwordLoginPrompt">Password</string>
+
+    <string name="searchPrompt">Cari filmmu</string>
+    <string name="upcomingMenu">Segera tayang</string>
+
+    <string name="synopsisTab">SYNOPSIS</string>
+    <string name="castTab">CAST</string>
+    <string name="watchTab">WATCH</string>
+    <string name="watchPrompt">WATCH NOW</string>
 </resources>
