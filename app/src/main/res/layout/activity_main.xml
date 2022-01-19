@@ -43,7 +43,7 @@
         android:background="@drawable/house"
 
         android:scaleType="fitXY"
-        android:drawableBottom="@drawable/house"
+        android:drawable="@drawable/house"
 
 
         app:layout_constraintLeft_toLeftOf="parent"
@@ -62,7 +62,7 @@
         android:background="@drawable/popular"
 
         android:scaleType="fitXY"
-        android:drawableBottom="@drawable/popular"
+        android:drawable="@drawable/popular"
 
         app:layout_constraintLeft_toLeftOf="@id/home_btn"
         app:layout_constraintRight_toRightOf="@id/update_btn"
@@ -80,7 +80,7 @@
         android:background="@drawable/update"
 
         android:scaleType="fitXY"
-        android:drawableBottom="@drawable/update"
+        android:drawable="@drawable/update"
 
 
         app:layout_constraintLeft_toLeftOf="@id/popular_btn"
@@ -99,7 +99,7 @@
         android:background="@drawable/settings"
 
         android:scaleType="fitXY"
-        android:drawableBottom="@drawable/settings"
+        android:drawable="@drawable/settings"
 
         app:layout_constraintLeft_toLeftOf="@id/update_btn"
         app:layout_constraintRight_toRightOf="parent"
