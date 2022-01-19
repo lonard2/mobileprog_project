@@ -2,7 +2,9 @@ package com.example.moviesaccess;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.synnapps.carouselview.CarouselView;
@@ -24,6 +26,30 @@ public class MainActivity extends AppCompatActivity {
         carousel.setPageCount(carouselImages.length);
 
         carousel.setImageListener(imageListener);
+
+        findViewById(R.id.popular_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PopularActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.update_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, UpcomingActivity.class);
+                startActivity(intent);
+            }
+        });
+//
+//        findViewById(R.id.settings_btn).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     ImageListener imageListener = new ImageListener() {
