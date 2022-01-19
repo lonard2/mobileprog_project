@@ -1,44 +1,32 @@
 package com.example.moviesaccess;
 
 import com.google.gson.annotations.SerializedName;
+import java.util.List;
 
 public class Cast {
-    @SerializedName("name")
-    private String name;
+    @SerializedName("id")
+    private Integer id;
+    @SerializedName("cast")
+    private List<DetailCast> cast = null;
 
-    @SerializedName("character")
-    private String character;
-
-    @SerializedName("profile_path")
-    private String profilePath;
-
-    public Cast(String name, String character, String profilePath) {
-        this.name = name;
-        this.character = character;
-        this.profilePath = profilePath;
+    public Cast(Integer id, List<DetailCast> cast) {
+        this.id = id;
+        this.cast = cast;
     }
 
-    public String getName() {
-        return name;
+    public Integer getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getCharacter() {
-        return character;
+    public List<DetailCast> getCast() {
+        return cast;
     }
 
-    public void setCharacter(String character) {
-        this.character = character;
-    }
-
-    public String getProfilePath() {
-        return profilePath;
-    }
-
-    public void setProfilePath(String profilePath) {
-        this.profilePath = profilePath;
+    public void setCast(List<DetailCast> cast) {
+        this.cast = cast;
     }
 }

@@ -10,9 +10,26 @@ import android.widget.ImageView;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
+import java.util.Random;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
 
+    Random random = new Random();
+
+    public static final String BASE_URL = "https://api.themoviedb.org/3/";
+    public static String API_KEY = "087c966e89e66df0fe40529ad3787030";
+    public Integer ID = random.nextInt(99999);
+
     CarouselView carousel;
+
+    Retrofit retrofit = new Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build();
 
     int[] carouselImages = {R.drawable.tenet, R.drawable.fastfurious,
                             R.drawable.tomjerry, R.drawable.worldwarz, R.drawable.war};
@@ -26,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         carousel.setPageCount(carouselImages.length);
 
         carousel.setImageListener(imageListener);
+
+        ApiInterface movieInterface = retrofit.create(ApiInterface.class);
+
+        Call<Movie> request = movieInterface.gatherMovieInfo(ID, API_KEY);
+
 
         findViewById(R.id.popular_btn).setOnClickListener(new View.OnClickListener() {
             @Override

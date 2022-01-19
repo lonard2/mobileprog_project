@@ -1,11 +1,12 @@
+
 package com.example.moviesaccess;
 
 import com.google.gson.annotations.SerializedName;
 
 public class MovieGenre {
+
     @SerializedName("id")
     private Integer id;
-
     @SerializedName("name")
     private String name;
 
@@ -29,4 +30,5 @@ public class MovieGenre {
     public void setName(String name) {
         this.name = name;
     }
+
 }
