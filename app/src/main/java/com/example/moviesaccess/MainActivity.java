@@ -6,13 +6,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
 
+import java.util.List;
 import java.util.Random;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public Integer ID = random.nextInt(99999);
 
     CarouselView carousel;
+    TextView text;
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -39,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        text = (TextView) findViewById(R.id.title);
+
         carousel = (CarouselView) findViewById(R.id.carousel);
         carousel.setPageCount(carouselImages.length);
 
@@ -48,6 +55,21 @@ public class MainActivity extends AppCompatActivity {
 
         Call<Movie> request = movieInterface.gatherMovieInfo(ID, API_KEY);
 
+        request.enqueue(new Callback<Movie>() {
+            @Override
+            public void onResponse(Call<Movie> call, Response<Movie> response) {
+
+                Movie movieResponse = response.body();
+                String title = movieResponse.getTitle();
+
+                text.setText(title);
+            }
+
+            @Override
+            public void onFailure(Call<Movie> call, Throwable t) {
+
+            }
+        });
 
         findViewById(R.id.popular_btn).setOnClickListener(new View.OnClickListener() {
             @Override
