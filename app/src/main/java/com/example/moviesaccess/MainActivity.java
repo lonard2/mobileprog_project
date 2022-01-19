@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String BASE_URL = "https://api.themoviedb.org/3/";
     public static String API_KEY = "087c966e89e66df0fe40529ad3787030";
-    public Integer ID = random.nextInt(99999);
+    public Integer MOVIE_ID = random.nextInt(99999);
 
     CarouselView carousel;
     TextView text;
@@ -53,21 +54,25 @@ public class MainActivity extends AppCompatActivity {
 
         ApiInterface movieInterface = retrofit.create(ApiInterface.class);
 
-        Call<Movie> request = movieInterface.gatherMovieInfo(ID, API_KEY);
+        Call<Movie> request = movieInterface.gatherMovieInfo(MOVIE_ID, API_KEY);
 
         request.enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {
+                    Integer responseCode = response.code();
 
-                Movie movieResponse = response.body();
-                String title = movieResponse.getTitle();
+                    text.setText(String.valueOf(responseCode));
 
-                text.setText(title);
+
+//                Movie movieResponse = response.body();
+//                String title = movieResponse.getTitle();
+//
+//                text.setText(title);
             }
 
             @Override
             public void onFailure(Call<Movie> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
 
