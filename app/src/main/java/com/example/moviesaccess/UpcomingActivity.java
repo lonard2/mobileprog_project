@@ -33,7 +33,7 @@ public class UpcomingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popular);
+        setContentView(R.layout.activity_upcoming);
 
         mRecyclerView = findViewById(R.id.posterView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
