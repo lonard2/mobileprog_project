@@ -1,33 +1,18 @@
+
 package com.example.moviesaccess;
 
-import java.util.Date;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class UpcomingMovie {
+public class NowPlaying {
     @SerializedName("page")
     private int page;
     @SerializedName("results")
-    private List<UpcomingResult> results;
-    @SerializedName("dates")
-    private Date dates;
-    @SerializedName("total_pages")
-    private int totalPages;
+    private List<NowPlayingResult> results;
     @SerializedName("total_results")
     private int totalResults;
-
-    public UpcomingMovie(int page, List<UpcomingResult> results,
-                         Date dates, int totalPages, int totalResults) {
-        this.page = page;
-        this.results = results;
-        this.dates = dates;
-        this.totalPages = totalPages;
-        this.totalResults = totalResults;
-    }
-
-    public UpcomingMovie(int page) {
-        this.page = page;
-    }
+    @SerializedName("total_pages")
+    private int totalPages;
 
     public int getPage() {
         return page;
@@ -37,28 +22,12 @@ public class UpcomingMovie {
         this.page = page;
     }
 
-    public List<UpcomingResult> getResults() {
+    public List<NowPlayingResult> getResults() {
         return results;
     }
 
-    public void setResults(List<UpcomingResult> results) {
+    public void setResults(List<NowPlayingResult> results) {
         this.results = results;
-    }
-
-    public Date getDates() {
-        return dates;
-    }
-
-    public void setDates(Date dates) {
-        this.dates = dates;
-    }
-
-    public int getTotalPages() {
-        return totalPages;
-    }
-
-    public void setTotalPages(int totalPages) {
-        this.totalPages = totalPages;
     }
 
     public int getTotalResults() {
@@ -69,7 +38,16 @@ public class UpcomingMovie {
         this.totalResults = totalResults;
     }
 
-    public class UpcomingResult {
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+
+    public class NowPlayingResult {
+
         @SerializedName("poster_path")
         private String posterPath;
         @SerializedName("adult")
@@ -79,7 +57,7 @@ public class UpcomingMovie {
         @SerializedName("release_date")
         private String releaseDate;
         @SerializedName("genre_ids")
-        private List<Integer> genreIds;
+        private List<Integer> genreIds = null;
         @SerializedName("id")
         private int id;
         @SerializedName("original_title")
@@ -97,27 +75,7 @@ public class UpcomingMovie {
         @SerializedName("video")
         private boolean video;
         @SerializedName("vote_average")
-        private int voteAverage;
-
-        public UpcomingResult(String posterPath, boolean adult, String overview, String releaseDate,
-                              List<Integer> genreIds, int id, String originalTitle,
-                              String originalLanguage, String title, String backdropPath,
-                              float popularity, int voteCount, boolean video, int voteAverage) {
-            this.posterPath = posterPath;
-            this.adult = adult;
-            this.overview = overview;
-            this.releaseDate = releaseDate;
-            this.genreIds = genreIds;
-            this.id = id;
-            this.originalTitle = originalTitle;
-            this.originalLanguage = originalLanguage;
-            this.title = title;
-            this.backdropPath = backdropPath;
-            this.popularity = popularity;
-            this.voteCount = voteCount;
-            this.video = video;
-            this.voteAverage = voteAverage;
-        }
+        private float voteAverage;
 
         public String getPosterPath() {
             return posterPath;
@@ -223,11 +181,11 @@ public class UpcomingMovie {
             this.video = video;
         }
 
-        public int getVoteAverage() {
+        public float getVoteAverage() {
             return voteAverage;
         }
 
-        public void setVoteAverage(int voteAverage) {
+        public void setVoteAverage(float voteAverage) {
             this.voteAverage = voteAverage;
         }
 

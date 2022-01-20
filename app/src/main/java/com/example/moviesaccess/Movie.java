@@ -1,6 +1,5 @@
 package com.example.moviesaccess;
 
-import com.example.moviesaccess.MovieGenre;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public class Movie {
     @SerializedName("budget")
     private Integer budget;
     @SerializedName("genres")
-    private List<MovieGenre> genres = null;
+    private List<MovieGenre> genres;
     @SerializedName("homepage")
     private String homepage;
     @SerializedName("id")
@@ -33,9 +32,9 @@ public class Movie {
     @SerializedName("poster_path")
     private Object posterPath;
     @SerializedName("production_companies")
-    private List<MovieProductionCompany> productionCompanies = null;
+    private List<MovieProductionCompany> productionCompanies;
     @SerializedName("production_countries")
-    private List<MovieProductionCountry> productionCountries = null;
+    private List<MovieProductionCountry> productionCountries;
     @SerializedName("release_date")
     private String releaseDate;
     @SerializedName("revenue")
@@ -43,7 +42,7 @@ public class Movie {
     @SerializedName("runtime")
     private Integer runtime;
     @SerializedName("spoken_languages")
-    private List<MovieSpokenLanguage> spokenLanguages = null;
+    private List<MovieSpokenLanguage> spokenLanguages;
     @SerializedName("status")
     private String status;
     @SerializedName("tagline")
@@ -292,5 +291,144 @@ public class Movie {
 
     public void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
+    }
+
+    public class MovieGenre {
+
+        @SerializedName("id")
+        private Integer id;
+        @SerializedName("name")
+        private String name;
+
+        public MovieGenre(Integer id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+    }
+
+    public class MovieProductionCompany {
+        @SerializedName("id")
+        private Integer id;
+        @SerializedName("logo_path")
+        private String logoPath;
+        @SerializedName("name")
+        private String name;
+        @SerializedName("origin_country")
+        private String originCountry;
+
+        public MovieProductionCompany(Integer id, String logoPath, String name, String originCountry) {
+            this.id = id;
+            this.logoPath = logoPath;
+            this.name = name;
+            this.originCountry = originCountry;
+        }
+
+        @SerializedName("id")
+        public Integer getId() {
+            return id;
+        }
+
+        public void setId(Integer id) {
+            this.id = id;
+        }
+
+        public String getLogoPath() {
+            return logoPath;
+        }
+
+        public void setLogoPath(String logoPath) {
+            this.logoPath = logoPath;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getOriginCountry() {
+            return originCountry;
+        }
+
+        public void setOriginCountry(String originCountry) {
+            this.originCountry = originCountry;
+        }
+    }
+
+    public class MovieProductionCountry {
+        @SerializedName("iso_3166_1")
+        private String iso31661;
+        @SerializedName("name")
+        private String name;
+
+        public MovieProductionCountry(String iso31661, String name) {
+            this.iso31661 = iso31661;
+            this.name = name;
+        }
+
+        public String getIso31661() {
+            return iso31661;
+        }
+
+        public void setIso31661(String iso31661) {
+            this.iso31661 = iso31661;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+    }
+
+    public class MovieSpokenLanguage {
+        @SerializedName("iso_639_1")
+        private String iso6391;
+        @SerializedName("name")
+        private String name;
+
+        public MovieSpokenLanguage(String iso6391, String name) {
+            this.iso6391 = iso6391;
+            this.name = name;
+        }
+
+        public String getIso6391() {
+            return iso6391;
+        }
+
+        public void setIso6391(String iso6391) {
+            this.iso6391 = iso6391;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
     }
 }

@@ -1,5 +1,7 @@
 package com.example.moviesaccess;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -13,10 +15,16 @@ public interface ApiInterface {
     Call<Movie> gatherMovieInfo(@Path("movie_id") Integer movie_id, @Query("api_key") String api_key);
 
     @GET("movie/popular/")
-    Call<PopularResult> gatherPopularData(@Query("api_key") String api_key);
+    Call<PopularMovie> gatherPopularData(@Query("api_key") String api_key);
+
+    @GET("movie/now_playing/")
+    Call<NowPlaying> gatherPlayingData(@Query("api_key") String api_key);
+
+    @GET("movie/top_rated/")
+    Call<TopRated> gatherHighlyRatedData(@Query("api_key") String api_key);
 
     @GET("movie/upcoming/")
-    Call<UpcomingResult> gatherUpcomingData(@Query("api_key") String api_key);
+    Call<UpcomingMovie> gatherUpcomingData(@Query("api_key") String api_key);
 
     @GET("movie/{movie_id}/credits/")
     Call<Cast> gatherMovieCast(@Path("movie_id") Integer id, @Query("api_key") String api_key);

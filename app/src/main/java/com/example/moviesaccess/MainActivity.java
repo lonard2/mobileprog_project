@@ -1,6 +1,8 @@
 package com.example.moviesaccess;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,14 +25,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    Random random = new Random();
-
     public static final String BASE_URL = "https://api.themoviedb.org/3/";
     public static String API_KEY = "087c966e89e66df0fe40529ad3787030";
-    public Integer MOVIE_ID = random.nextInt(99999);
 
     CarouselView carousel;
-    TextView text;
+    RecyclerView mRecyclerView;
+    MainAdapter mAdapter;
 
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
@@ -45,33 +45,29 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        text = (TextView) findViewById(R.id.title);
-
         carousel = (CarouselView) findViewById(R.id.carousel);
         carousel.setPageCount(carouselImages.length);
-
         carousel.setImageListener(imageListener);
+
+        mRecyclerView = findViewById(R.id.posterView);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, 3));
 
         ApiInterface movieInterface = retrofit.create(ApiInterface.class);
 
-        Call<Movie> request = movieInterface.gatherMovieInfo(MOVIE_ID, API_KEY);
+        Call<NowPlaying> request = movieInterface.gatherPlayingData(API_KEY);
 
-        request.enqueue(new Callback<Movie>() {
+        request.enqueue(new Callback<NowPlaying>() {
             @Override
-            public void onResponse(Call<Movie> call, Response<Movie> response) {
-                    Integer responseCode = response.code();
+            public void onResponse(Call<NowPlaying> call, Response<NowPlaying> response) {
+                NowPlaying nowPlayingList = response.body();
+                List<NowPlaying.NowPlayingResult> nowPlayingResponse = nowPlayingList.getResults();
 
-                    text.setText(String.valueOf(responseCode));
-
-
-//                Movie movieResponse = response.body();
-//                String title = movieResponse.getTitle();
-//
-//                text.setText(title);
+                mAdapter = new MainAdapter(nowPlayingResponse);
+                mRecyclerView.setAdapter(mAdapter);
             }
 
             @Override
-            public void onFailure(Call<Movie> call, Throwable t) {
+            public void onFailure(Call<NowPlaying> call, Throwable t) {
                 t.printStackTrace();
             }
         });
@@ -91,14 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//
-//        findViewById(R.id.settings_btn).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
     }
 
     ImageListener imageListener = new ImageListener() {

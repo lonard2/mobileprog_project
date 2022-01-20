@@ -3,7 +3,51 @@ package com.example.moviesaccess;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class PopularResult {
+public class TopRated {
+
+    @SerializedName("page")
+    private int page;
+    @SerializedName("results")
+    private List<TopRatedResult> results = null;
+    @SerializedName("total_results")
+    private int totalResults;
+    @SerializedName("total_pages")
+    private int totalPages;
+
+    public int getPage() {
+        return page;
+    }
+
+    public void setPage(int page) {
+        this.page = page;
+    }
+
+    public List<TopRatedResult> getResults() {
+        return results;
+    }
+
+    public void setResults(List<TopRatedResult> results) {
+        this.results = results;
+    }
+
+    public int getTotalResults() {
+        return totalResults;
+    }
+
+    public void setTotalResults(int totalResults) {
+        this.totalResults = totalResults;
+    }
+
+    public int getTotalPages() {
+        return totalPages;
+    }
+
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
+
+public class TopRatedResult {
+
     @SerializedName("poster_path")
     private String posterPath;
     @SerializedName("adult")
@@ -13,7 +57,7 @@ public class PopularResult {
     @SerializedName("release_date")
     private String releaseDate;
     @SerializedName("genre_ids")
-    private List<Integer> genreIds = null;
+    private List<Integer> genreIds;
     @SerializedName("id")
     private int id;
     @SerializedName("original_title")
@@ -32,27 +76,6 @@ public class PopularResult {
     private boolean video;
     @SerializedName("vote_average")
     private float voteAverage;
-
-    public PopularResult(String posterPath, boolean adult, String overview,
-                  String releaseDate, List<Integer> genreIds, int id,
-                  String originalTitle, String originalLanguage, String title,
-                  String backdropPath, float popularity, int voteCount, boolean video,
-                  float voteAverage) {
-        this.posterPath = posterPath;
-        this.adult = adult;
-        this.overview = overview;
-        this.releaseDate = releaseDate;
-        this.genreIds = genreIds;
-        this.id = id;
-        this.originalTitle = originalTitle;
-        this.originalLanguage = originalLanguage;
-        this.title = title;
-        this.backdropPath = backdropPath;
-        this.popularity = popularity;
-        this.voteCount = voteCount;
-        this.video = video;
-        this.voteAverage = voteAverage;
-    }
 
     public String getPosterPath() {
         return posterPath;
@@ -165,5 +188,7 @@ public class PopularResult {
     public void setVoteAverage(float voteAverage) {
         this.voteAverage = voteAverage;
     }
+
+}
 
 }

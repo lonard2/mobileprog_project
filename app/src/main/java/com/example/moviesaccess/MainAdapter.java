@@ -13,32 +13,32 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.ViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
-    private List<PopularMovie.PopularResult> mPosterList;
+    private List<NowPlaying.NowPlayingResult> mPosterList;
 
-    public PopularAdapter(List<PopularMovie.PopularResult> posterList) {
+    public MainAdapter(List<NowPlaying.NowPlayingResult> posterList) {
         mPosterList = posterList;
     }
 
     @NonNull
     @Override
-    public PopularAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
-        return new PopularAdapter.ViewHolder(view);
+        return new MainAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        PopularMovie.PopularResult popular = mPosterList.get(position);
+        NowPlaying.NowPlayingResult playing = mPosterList.get(position);
 
-        Picasso.get().load("https://image.tmdb.org/t/p/w500" + popular.getPosterPath()).into(holder.posterImage);
+        Picasso.get().load("https://image.tmdb.org/t/p/w500" + playing.getPosterPath()).into(holder.posterImage);
     }
 
     @Override
     public int getItemCount() {
         return mPosterList.size();
-    }
+        }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
