@@ -28,3 +28,9 @@ Minimum API that must be fulfilled by users are API 26 or Android 8.0.
 
 This product uses the TMDB API but is not endorsed or certified by TMDB.
 This product also uses CarouselView by sayyam (https://github.com/sayyam/carouselview)
+
+
+Mobile Programming (MOBI6059001) - LF01
+2301857872 - Lonard Steven
+2301861232 - Bryan Albert Manuel
+2301894256 - Calvin Lee
